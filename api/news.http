@@ -1,0 +1,24 @@
+@api = http://localhost:3000
+
+
+GET {{api}}/news
+
+###
+GET {{api}}/news/6012cc725f096b3061c1b88d
+
+### Cria uma notícia
+POST {{api}}/news
+Content-Type: application/json
+
+{
+    "news_id": 2,
+    "title" : "Notícia Teste2",
+    "content" : "Segundo o instituto de testes o POST está gravando de forma divina",
+    "date": "{{$localDatetime rfc1123}}"
+}
+
+###
+DELETE {{api}}/news/1
+
+###
+PUT {{api}}/news/1
