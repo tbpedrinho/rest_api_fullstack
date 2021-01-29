@@ -1,0 +1,23 @@
+version: '3.1'
+services:
+    frontend: # Name of our service
+      build: ./frontend # path to dockerfile
+      ports: # Port binding to host from docker container
+        - "3000:3000" # Bind port 3000 of host to 3000 of container
+      container_name: frontend-docker
+      restart: always # What to do if container crashes
+      # Create backend container
+    backend:
+    # Create backend container  
+      build: ./api
+      ports:
+        - "8080:8080"
+      container_name: backend-docker
+      restart: on-failure 
+  # Create database container
+    mongo:
+      image: mongo:latest
+      restart: always
+      environment:
+       MONGO_INITDB_ROOT_USERNAME: root
+       MONGO_INITDB_ROOT_PASSWORD: example
